@@ -1,0 +1,8 @@
+<%= form_with(url: "/", method: 'get', local: true) do %>
+  <div>
+    <div style="display: flex">
+      <%= text_field_tag :user_id, nil, placeholder: "Enter User ID", style: "height: 50px; text-align: center; outline: none; border: 1px solid lightgrey;" %>
+      <%= submit_tag 'Show photos', style: "height: 54px; outline: none; border: none; background: lightgray; cursor: pointer" %>
+    </div>
+  <div>
+<% end %>

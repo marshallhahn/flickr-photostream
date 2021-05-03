@@ -1,0 +1,35 @@
+<% if params[:user_id].nil? %>
+  <section style="width: 100%; display: flex; justify-content: center">
+    <div>
+      <%= render 'search_form' %>
+    </div>
+  </section>
+<% else %>
+<div>
+  <section style="width: 100%; display: flex; justify-content: center">
+    <div>
+      <%= render 'search_form' %>
+    </div>
+  </section>
+  <section style="display: flex; justify-content: center;">
+    <div style="margin-top: 1em;">
+      <% if params[:user_id].empty? %>
+        <div>Flickr API Searcher is displaying latest public photos uploaded to Flickr</div>
+      <% else %>
+        <div>Flickr API Searcher is displaying public photos uploaded by <%= params[:user_id] %> </div>
+      <% end %>
+    </div>
+  </section>
+  <div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr) );">
+    <% @photos.each do |photo| %>
+      <div style="padding: 1em; display: flex; justify-content: center;">
+        <a href="<%= Flickr.url_photopage(photo) %>" target="_blank" rel="noopener noreferrer">
+          <img src="<%= Flickr.url_n(photo) %>"/>
+        </a>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
